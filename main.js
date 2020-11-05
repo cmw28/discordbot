@@ -1,14 +1,15 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
+const fs = require('fs');
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
-
-client.on('guildMemberAdd', member => {
-  console.log(`Welcoming ${member.name} to ${member.guild.name}`);
-  member.guild.systemChannel.send(`Welcome to ${member.guild.name}, ${member.name}!`);
+fs.readdir('./events/', (err, files) => {
+  if (err) return console.log.error(err);
+  files.forEach(file => {
+    const event = require(`./events/${file}`);
+    const eventName = file.split('.')[0];
+    client.on(eventName, event.bind(null, client));
+  });
 });
 
 client.login(config.token);
