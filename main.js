@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs'); // we need this to read ./events
-let config; // creates a config thing for the try catch block to put the config into
+// let config; // creates a config thing for the try catch block to put the config into
 
 try { // try to get the config
-  config = require('./config.json');
+  var config = require('./config.json');
 } catch { // if that goes wrong... complain and exit
   console.error('There is no config! Please copy ./defaultconfig.json to ./config.json and add a token.');
   process.exit();
