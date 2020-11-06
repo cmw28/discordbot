@@ -4,7 +4,7 @@ const fs = require('fs');
 
 let config;
 // check if there actually is a config. if not, complain and exit.
-try{
+try {
   config = require('./config.json');
 } catch {
   console.error('There is no config! Please copy ./defaultconfig.json to ./config.json and add a token.');
