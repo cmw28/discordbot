@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs'); // we need this to read ./events
-// let config; // creates a config thing for the try catch block to put the config into
 
 try { // try to get the config
   var config = require('./config.json');
